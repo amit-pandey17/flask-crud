@@ -1,4 +1,6 @@
-import os
+from backend.globals import DATABASE_URI, SECRET_KEY
 
 class Config:
-    pass
+    SQLALCHEMY_DATABASE_URI = DATABASE_URI
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = SECRET_KEY
