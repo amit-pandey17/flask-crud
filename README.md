@@ -1,5 +1,21 @@
 # Second-Round Interview – Systems Analyst
 
+### ports
+Flask: 5000
+
+### project structure:
+    ├──cmc-assignment/
+        ├── backend/
+            ├── app.py
+            ├── Dockerfile
+            ├── requirements.txt
+        ├── View/
+            ├── index.html
+            ├── style.css
+        ├── compose.yaml
+        ├── .gitignore
+        ├── README.md
+
 ## Hands-On Demonstration Overview
 
 **Objective:**  
