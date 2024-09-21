@@ -2,6 +2,32 @@ version: '3.8'
 
 services:
   backend:
-  build: ./backend
-  ports:
-      - "5000:5000"  # Exposing Flask API'
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/code
+    environment:
+      - DATABASE_URL=mysql://user:password@mysql:3306/dbname  # Update values
+    depends_on:
+      - mysql
+
+  frontend:
+    image: nginx:latest
+    volumes:
+      - ./View:/code/View
+      - ./View/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Change to a strong password
+      MYSQL_DATABASE: dbname  # Name of your database
+      MYSQL_USER: user  # MySQL user
+      MYSQL_PASSWORD: password  # User password
+    ports:
+      - "3306:3306"  # Exposing MySQL port
