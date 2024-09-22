@@ -1,9 +1,11 @@
-# backend/app.py
 from flask import Flask
-from backend.config import Config
-from backend.model.user import db
-from backend.routes.routes import user_bp
+from config import Config 
+from model.user import db
+from routes.routes import user_bp  # Adjusted import
 from flask_cors import CORS
+import os
+
+
 
 def create_app():
     app = Flask(__name__)
@@ -16,9 +18,11 @@ def create_app():
 
     with app.app_context():
         db.create_all()
+    print("Current working directory:", os.getcwd())
+    print("Python path:", sys.path)
 
     return app
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5002)

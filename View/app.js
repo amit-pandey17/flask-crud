@@ -1,5 +1,3 @@
-// frontend/app.js
-
 const apiUrl = '/api/users'; // Relative path since Nginx proxies /api to backend
 const userTableBody = document.querySelector('#user-table tbody');
 const userForm = document.getElementById('user-form');

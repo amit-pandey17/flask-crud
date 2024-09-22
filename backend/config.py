@@ -1,4 +1,4 @@
-from backend.globals import DATABASE_URI, SECRET_KEY
+from globals import DATABASE_URI, SECRET_KEY
 
 class Config:
     SQLALCHEMY_DATABASE_URI = DATABASE_URI

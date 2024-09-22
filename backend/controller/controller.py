@@ -3,10 +3,8 @@ from backend.model.user import UserModel
 from backend.globals import ROLES
 
 class Controller:
-
     @staticmethod
     def get_roles():
-        # Returns the available roles
         return jsonify(ROLES), 200
 
     @staticmethod

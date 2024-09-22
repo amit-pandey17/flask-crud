@@ -1,16 +1,16 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
     ports:
-      - "5000:5000"
+      - "5002:5002"  # Adjusted port
     volumes:
       - ./backend:/code
     environment:
-      - DATABASE_URL=mysql://user:password@mysql:3306/dbname  # Update values
+      - DATABASE_URL=mysql://user:password@mysql:3306/dbname
+      # - PYTHONPATH=/code
     depends_on:
       - mysql
+    command: python3 -m app  # Adjusted to match the module path
 
   frontend:
     image: nginx:latest
@@ -25,9 +25,9 @@ services:
   mysql:
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword  # Change to a strong password
-      MYSQL_DATABASE: dbname  # Name of your database
-      MYSQL_USER: user  # MySQL user
-      MYSQL_PASSWORD: password  # User password
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: dbname
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "3306:3306"  # Exposing MySQL port
+      - "3306:3306"
